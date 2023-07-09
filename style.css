@@ -1,0 +1,319 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+#main {
+  padding: 20px;
+  height: 100vh;
+  background: #0f2027;
+  background: -webkit-linear-gradient(to top, #2c5364, #203a43, #0f2027);
+  background: linear-gradient(to top, #2c5364, #203a43, #0f2027);
+}
+.container {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  margin: 0 auto;
+  padding: 20px;
+  padding-top: 15px;
+  padding-bottom: 0px;
+  border-radius: 20px;
+  /* min-height: 50vh; */
+}
+
+.input-box {
+  position: relative;
+}
+
+.todo-icon {
+  color: rgb(90, 90, 90);
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 30px;
+}
+
+input[type="text"] {
+  width: 87%;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  padding: 15px;
+  font-size: 28px;
+  padding-left: 70px;
+  font-weight: 500;
+  background-color: rgb(235, 235, 235);
+}
+
+input[type="text"]::placeholder {
+  color: rgba(190, 190, 190, 0.884);
+}
+
+input[type="text"]:focus {
+  background-image: url(https://png.pngtree.com/thumb_back/fh260/background/20210811/pngtree-white-and-grey-3d-wall-pattern-background-image-vector-image_760915.jpg);
+  background-position: center;
+  background-size: contain;
+  border: none;
+  outline: none;
+}
+
+.add-btn {
+  color: rgb(90, 90, 90);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+}
+.task-done {
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+  margin-left: 10px;
+}
+
+.task-done i {
+  color: rgb(185, 185, 185);
+}
+
+#cplt-all,
+#clr-all {
+  cursor: pointer;
+}
+#cplt-all:hover {
+  color: green;
+  letter-spacing: 0.2px;
+}
+
+#clr-all:hover {
+  color: red;
+  letter-spacing: 0.2px;
+}
+
+.task-done > p,
+.task-clear > p,
+#footer-right span,
+#footer-left span {
+  font-size: 13px;
+  color: gray;
+}
+
+.task-info,
+.todo-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-info,
+.todo-footer,
+#tasks {
+  margin: 10px 0;
+}
+
+hr {
+  border: 1px solid rgb(221, 221, 221);
+}
+
+#all,
+#uncomplete,
+#complete {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+.custom-checkbox {
+  position: absolute;
+  opacity: 0;
+}
+
+.custom-checkbox + label {
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+}
+
+.custom-checkbox + label::before {
+  content: "";
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: text-top;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border: 1px solid gray;
+  border-radius: 50%;
+}
+
+.custom-checkbox:hover + label::before {
+  /* background: #f35429; */
+  border: 1px solid black;
+}
+
+.custom-checkbox:focus + label::before {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+}
+
+.custom-checkbox:checked + label::before {
+  background: rgb(87, 87, 87);
+}
+
+.custom-checkbox:checked + label::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 9px;
+  background: white;
+  width: 2px;
+  height: 2px;
+  box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white,
+    4px -6px 0 white, 4px -8px 0 white;
+  transform: rotate(45deg);
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  list-style: none;
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: rgb(244, 244, 244);
+  font-size: 19px;
+}
+
+#close {
+  display: none;
+}
+
+#close:hover {
+  cursor: pointer;
+}
+
+#all li:hover,
+#uncomplete li:hover,
+#complete li:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+#all li:hover #close,
+#uncomplete li:hover #close,
+#complete li:hover #close {
+  display: block;
+}
+
+#footer-left #count {
+  color: rgb(20, 20, 20);
+  font-weight: bold;
+}
+
+#footer-right .active {
+  color: black;
+  font-weight: bold;
+  box-shadow: 1px 2px 2px rgb(120, 120, 120);
+  border: 1px solid rgb(95, 95, 95);
+  padding: 3px;
+}
+
+.links {
+  cursor: pointer;
+}
+
+/* Toast Notification */
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+/* Toggling tabcontent */
+
+.tabcontent {
+  display: none;
+  min-height: 20vh;
+}
+
+/* Taskbar Empty */
+
+.empty {
+  text-align: center;
+  align-content: center;
+  height: 20vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 50px;
+  color: #e0e0e0;
+}
+
+.info-txt {
+  font-size: 20px;
+}
